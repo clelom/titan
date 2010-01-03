@@ -1,0 +1,1 @@
+255#"\Storage card\J9\PPRO11\bin\j9.exe" "-jcl:ppro11" "-Xbootclasspath/p:\Storage card\J9\Titan\lib\bluecove-2.0.2.jar;\Storage card\J9\Titan" "-Duser.dir=\Storage card\J9\Titan\" "-jar" "\Storage card\J9\Titan\TitanMobileWM.jar"
