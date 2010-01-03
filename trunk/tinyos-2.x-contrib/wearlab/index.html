@@ -1,0 +1,105 @@
+<!--
+    This file is part of Titan.
+
+    Titan is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as 
+    published by the Free Software Foundation, either version 3 of 
+    the License, or (at your option) any later version.
+
+    Titan is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Titan. If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+<head>
+   <title>Titan: a Tiny Task Network</title>
+</head>
+<body TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
+
+<!-- img src=""></img-->
+
+<h1>Titan: a Tiny Task Network</h1>
+
+<p>Titan is a framework that has been designed to process context information in a distributed manner in such smart object networks. The framework takes a service-oriented approach and defines context recognition algorithm modules as services which can be interconnected and parameterized to design new algorithms.</p>
+<p>The implementation into TinyOS is split into two parts: A <a href="#nodemanager">TinyOS NodeManager</a> to be loaded onto the sensor nodes and a <a href="#networkmanager">Network Manager</a> implemented in Java, which is meant to be run on a PC or MobilePhone.</p>
+
+<p>This document roughly describes the implementation and where to find what. Further information on the project can be found in the scientific publications listed at the <a href="http://www.wearable.ethz.ch/research/groups/sensor_nets/Titan">Titan project page</a>.
+
+<h2><a name="setup">Setting Titan up</a></h2>
+<ol>
+<li>A sample application can be found in the <code>tinyos-2.x-contrib/wearlab/apps/TestTitan</code>. Compile and flash to sensor nodes. The basestation node connected to the PC should have address 0 and does not need any special parameters.</li>
+<li>Change to <code>tinyos-2.x-contrib/wearlab/support/sdk/java</code>. Adjust the settings in <code>./titan/LocalSettings.java</code> as described in the source code documentation (most important is setting the getMOTECOM() method to the basestation's serial port). Compile Network Manager with <code>make</code>.</li>
+<li>Start Network Manager with <code>./run_titan</code> (created by make in the previous step)</li>
+<li>You are now at a console that accepts commands for the Titan nodes. Type <code>help titan</code> for a list of commands you can execute</li>
+<li>type <code>titan start</code>. This connects to the basestation. Now type <code>titan ledtest all</code> to get the nodes to blink.</li>
+<li>To get some data out of the network, type <code>titan load cfg/test_transmission.cfg</code> to instruct node 1 to send some data to the basestation. Notice, that port 8000 has been opened.</li>
+<li>Check the output of the network, for instance with <code>telnet localhost 8000</code> on your command line (not in the Titan console!).</li>
+</ol>
+
+<h2><a name="nodemanager">TinyOS NodeManager</a></h2>
+<p>The Titan implementation can be found at <code>tinyos-2.x-contrib/wearlab/tos/lib/titan</code>. The most important files are:
+  <ul>
+    <li><code>TitanC.nc</code><br/>
+      All the Titan components are bound together here. An interesting section is found between "Begin task bindings" and "End task bindings". It defines which services (tasks) are available on the sensor node to be programmed. Some services depend on available hardware such as sensors.
+    </li>
+    <li><code>Titan.nc</code><br/>
+      This interface is what the Titan framework presents to the services it implements. It includes functionality for sending and receiving data as well as for allocating memory for task internal data such as state information.
+    </li>
+    <li><code>tasks/*.nc</code></br/>
+      The actual tasks that are offered by the node. A good example to see how tasks are working is <code>TitanTaskDuplicator</code>
+    </li>
+    <li><code>TitanInternal.h</code><br/>
+      This file defines Titan internal data structures and their sizes. The most important are <code>TITAN_MAX_FIFOS</code> the number of FIFOs available for data exchange between services, their size <code>TITAN_FIFO_SIZE</code>, and <code>TITAN_PACKET_SIZE</code> in <code>Titan.h</code>. Those define the memory allocated for inter-service data.<br/>
+      Further, <code>TITAN_TASK_MEMORY_SIZE</code> defines how much dynamic memory is available for service internal data.
+    </li>
+    <li><code>TitanM.nc</code><br/>
+      The "core" of Titan - implements the commands offered over the Titan interface.
+    </li>
+    <li><code>TitanConfigM.nc</code><br/>
+      Receives configuration messages and reconfigures the node
+    </li>
+  </ul>
+</p>
+
+<h2><a name="networkmanager">Java NetworkManager</a></h2>
+<p>The Titan implementation can be found at <code>tinyos-2.x-contrib/wearlab/support/sdk/java</code>. The most important classes are:
+  <ul>
+    <li><code>TOSCommandLine.TOSCommandLine</code><br/>
+      A very simple command line that allows sending commands to the Titan implementation.
+    </li>
+    <li><code>titan.TitanCommand</code><br/>
+      Executes the commands received by TOSCommandLine and receives Messages from the Basestation
+    </li>
+    <li><code>titan.LocalSettings</code><br/>
+      Sets location-dependant paths for the execution. For simulation, the startup location is determined, for physical tests, it sets the MOTECOM variable to connect to the network.
+    </li>
+    <li><code>titan.ConfigReader</code><br/>
+      Reads service graphs from files. Examples are given in the cfg/*.cfg directory
+    </li>
+    <li><code>titan.compiler.Compiler</code><br/>
+      Interface for a mapper of the service graph to the network. Connects to <code>titan.services.ServiceDirectory</code> for available nodes and their services.
+    </li>
+    <li><code>titan.execution.NetworkManager</code><br/>
+      Monitors the execution of the service graph.
+    </li>
+    <li><code>titan.simulation.Simulation</code><br/>
+      Wrapper for communication with TOSSIM.
+    </li>
+    <li><code>titan.TitanDataCom</code><br/>
+      Data that is routed to the sink node on node 0 is presented at a TCP port 8000+sink port number
+    </li>
+    <li><code>titan.application.Dice</code><br/>
+      Example application using reconfiguration to run a dice game.
+    </li>
+  </ul>
+</p>
+</p>
+
+
+</body>
+</html>

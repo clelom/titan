@@ -1,0 +1,9 @@
+tasks=[
+  Duplicator(1):(nodeID=100),
+  RoundTrip():(nodeID=1124)
+]
+
+connections=[
+  Connection(0,0, 1,0),
+  Connection(1,0, 0,0)
+]

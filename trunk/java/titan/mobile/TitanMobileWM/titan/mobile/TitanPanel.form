@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.2" maxVersion="1.6" type="org.netbeans.modules.form.forminfo.PanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="label1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="LedtestCommand" min="-2" pref="60" max="-2" attributes="1"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="ServicesCommand" min="-2" pref="60" max="-2" attributes="1"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="LoadCommand" min="-2" pref="60" max="-2" attributes="1"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="ClearCommand" min="-2" pref="60" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="FarkleCommand" min="-2" pref="60" max="-2" attributes="1"/>
+                                          <Component id="HelpCommand" alignment="0" min="-2" pref="60" max="-2" attributes="1"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="StatusLabel" pref="14" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="label2" alignment="0" min="-2" max="-2" attributes="1"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="CommandText" pref="175" max="32767" attributes="1"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="SendCommand" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="NodeStartCommand" min="-2" pref="60" max="-2" attributes="1"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="NodeStopCommand" min="-2" pref="60" max="-2" attributes="1"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="LoadTestCommand" min="-2" pref="60" max="-2" attributes="1"/>
+                      <EmptySpace pref="42" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="RouterCommand" min="-2" pref="60" max="-2" attributes="1"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="StressCommand" min="-2" pref="60" max="-2" attributes="1"/>
+                      <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="StatusLabel" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="label1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="LedtestCommand" min="-2" max="-2" attributes="0"/>
+                  <Component id="ServicesCommand" min="-2" max="-2" attributes="0"/>
+                  <Component id="FarkleCommand" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="LoadCommand" min="-2" max="-2" attributes="0"/>
+                  <Component id="ClearCommand" min="-2" max="-2" attributes="0"/>
+                  <Component id="HelpCommand" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="NodeStopCommand" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="NodeStartCommand" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="StressCommand" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="RouterCommand" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="label2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="LoadTestCommand" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="SendCommand" min="0" pref="0" max="32767" attributes="1"/>
+                  <Component id="CommandText" alignment="0" max="32767" attributes="1"/>
+              </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="java.awt.Label" name="StatusLabel">
+    </Component>
+    <Component class="java.awt.Button" name="LoadCommand">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="Load"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoadCommandActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="java.awt.Button" name="ServicesCommand">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="Services"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ServicesCommandActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="java.awt.TextField" name="CommandText">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="titan start"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Label" name="label1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Default Commands:"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Label" name="label2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Custom Command:"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Button" name="SendCommand">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="Send"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SendCommandActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="java.awt.Button" name="HelpCommand">
+      <Properties>
+        <Property name="actionCommand" type="java.lang.String" value="Help"/>
+        <Property name="label" type="java.lang.String" value="Help"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HelpCommandActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="java.awt.Button" name="LedtestCommand">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="LEDtest"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LedtestCommandActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="java.awt.Button" name="ClearCommand">
+      <Properties>
+        <Property name="actionCommand" type="java.lang.String" value="Clear"/>
+        <Property name="label" type="java.lang.String" value="Clear"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ClearCommandActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="java.awt.Button" name="FarkleCommand">
+      <Properties>
+        <Property name="actionCommand" type="java.lang.String" value="Dice"/>
+        <Property name="label" type="java.lang.String" value="Dice"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FarkleCommandActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="java.awt.Button" name="NodeStopCommand">
+      <Properties>
+        <Property name="actionCommand" type="java.lang.String" value="NStop"/>
+        <Property name="label" type="java.lang.String" value="NStop"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NodeStopCommandActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="java.awt.Button" name="NodeStartCommand">
+      <Properties>
+        <Property name="actionCommand" type="java.lang.String" value="NStart"/>
+        <Property name="label" type="java.lang.String" value="NStart"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NodeStartCommandActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="java.awt.Button" name="LoadTestCommand">
+      <Properties>
+        <Property name="actionCommand" type="java.lang.String" value="LoadT"/>
+        <Property name="label" type="java.lang.String" value="LoadT"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoadTestCommandActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="java.awt.Button" name="RouterCommand">
+      <Properties>
+        <Property name="actionCommand" type="java.lang.String" value="Router"/>
+        <Property name="label" type="java.lang.String" value="Router"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RouterCommandActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="java.awt.Button" name="StressCommand">
+      <Properties>
+        <Property name="actionCommand" type="java.lang.String" value="Stress"/>
+        <Property name="label" type="java.lang.String" value="Stress"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StressCommandActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>

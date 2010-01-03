@@ -1,0 +1,1 @@
+255#"\Speicherkarte\J9\PPRO11\bin\j9.exe" "-jcl:ppro11" "-Xnojit" "-Xbootclasspath/p:\Speicherkarte\J9\Titan\lib\bluecove-2.0.2.jar" -jar "\Speicherkarte\J9\BluetoothGateway\BluetoothGateway.jar"

@@ -1,0 +1,16 @@
+# Authors
+#   * Benedikt Köppel <bkoeppel@ee.ethz.ch>
+# written for
+#   * Clemens Lombriser
+#   * ETHZ / IfE
+#
+# Projects:
+#   * receives packets from ADCUDPEcho motes
+#   * processes and prints received ADC samples
+#
+# How to use:
+# 	* cd Eclipse/workspace/ADCServer/bin
+#	* echo 'Main-Class: server.Server' > Manifest.txt
+#	* jar cmf Manifest.txt ADCServer.jar filters server utils
+#	* Start server with: java -jar ADCServer.jar <my local ip> <port number> <sampling period> [ <nodes > ]*
+

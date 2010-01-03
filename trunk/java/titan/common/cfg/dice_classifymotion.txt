@@ -1,0 +1,49 @@
+
+tasks=[ 
+  # dice number 6
+  Accelerometer(20):(nodeID=6), # task 0
+  Magnitude(3,2048,1):(nodeID=6), # task 1
+  Duplicator(2):(nodeID=6), # task 2
+  Variance(10,10,4):(nodeID=6), # task 3
+  Mean(10,10):(nodeID=6), # task 4
+  Merge(2,2):(nodeID=6), # task 5
+
+  # dice 5
+  Accelerometer(20):(nodeID=5), # task 6
+  Magnitude(3,2048,1):(nodeID=5), # task 7
+  Duplicator(2):(nodeID=5), # task 8
+  Variance(10,10,4):(nodeID=5), # task 9
+  Mean(10,10):(nodeID=5), # task 10
+  Merge(2,2):(nodeID=5), # task 11
+
+  Merge(2,4):(nodeID=6), # task 12
+
+  Sink():(nodeID=0) # task 13
+
+  ]
+
+connections=[
+  # Connections on 6
+  Connection( 0,0,  1,0),
+  Connection( 0,1,  1,1),
+  Connection( 0,2,  1,2),
+  Connection( 1,0,  2,0),
+  Connection( 2,0,  3,0),
+  Connection( 2,1,  4,0),
+  Connection( 3,0,  5,0),
+  Connection( 4,0,  5,1),
+  Connection( 5,0, 12,0),
+
+  # Connections on 5
+  Connection( 6,0,  7,0),
+  Connection( 6,1,  7,1),
+  Connection( 6,2,  7,2),
+  Connection( 7,0,  8,0),
+  Connection( 8,0,  9,0),
+  Connection( 8,1, 10,0),
+  Connection( 9,0, 11,0),
+  Connection(10,0, 11,1),
+  Connection(11,0, 12,1),
+
+  Connection(12,0, 13,0)
+]

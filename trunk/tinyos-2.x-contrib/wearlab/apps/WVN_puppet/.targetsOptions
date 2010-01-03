@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<buildTargets>
+<target loop="false" name="Target voicemodule" nostdinc="false" time="0.0">
+<includes build="true" defaults="true"/>
+<excludes>
+<exclude>.*\.svn.*</exclude>
+</excludes>
+<typedefs/>
+<macros/>
+<selected>voicemodule</selected>
+<application>PuppetApp</application>
+<default>true</default>
+</target>
+</buildTargets>

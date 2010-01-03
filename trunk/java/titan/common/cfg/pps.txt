@@ -1,0 +1,56 @@
+
+tasks=[ 
+  ############## Node 3: position
+  Accelerometer(20,1):(nodeID=3), # task 0, 10Hz
+  Mean(50,25):(nodeID=3),     #task 1, X
+  Mean(50,25):(nodeID=3),     # task 2, Y
+  Mean(50,25):(nodeID=3),     # task 3, Z
+  DecisionTree( 3, <,0,512, class,1, >,0,768, class, 6, <,1,512, class,2, >,1,1024, class,5, <,2,256, class,3, >,2,1024, class,4, class,7):(nodeID=3), # task 4
+  #Merge(3),
+  TransDetect(),  # task 5
+
+  
+  ############## Node 3: shaking
+  Accelerometer(40,1):(nodeID=2), # task 6, 10Hz
+  Variance(15,10):(nodeID=2),     #task 7
+  Variance(15,10):(nodeID=2),     # task 8
+  Variance(15,10):(nodeID=2),     # task 9
+  #Merge(3),
+  DecisionTree(3, =,0,0, =,1,0, class,1, =,2,0, class,1, class,4, class,1 ):(nodeID=2), # task 10
+  TransDetect():(nodeID=2), # task 11
+  
+  
+  ############## Node 3: shaking
+  #Merge(2):(nodeID=1), # task 12
+  DecisionTree(2, =,0,4, class,0, =,1,1, class,3, class,4  ):(nodeID=1), # task 12
+  Voice(2):(nodeID=1) # task 13
+
+  ############## Node 0: sink
+  #Sink():(nodeID=0) # task 13
+  ]
+
+connections=[
+
+  # Node 3: position
+  Connection(0,0, 1,0), #mean
+  Connection(0,1, 2,0),
+  Connection(0,2, 3,0),
+  Connection(1,0, 4,0), #collect
+  Connection(2,0, 4,1),
+  Connection(3,0, 4,2),
+  Connection(4,0, 5,0), # filter
+
+  # Node 2: shaking
+  Connection( 6,0, 7,0), #mean
+  Connection( 6,1, 8,0),
+  Connection( 6,2, 9,0),
+  Connection( 7,0,10,0), #collect
+  Connection( 8,0,10,1),
+  Connection( 9,0,10,2),
+  Connection(10,0,11,0), # filter
+
+  # Node 1: voice
+  Connection( 5,0, 12,0),
+  Connection(11,0, 12,1),
+  Connection(12,0,13,0)
+]
