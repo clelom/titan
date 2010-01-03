@@ -1,0 +1,21 @@
+
+tasks=[ 
+  SimpleWriter():(nodeID=5),
+  Duplicator(7):(nodeID=5),
+  Merge(7,2):(nodeID=5),
+#  Sum(14,14):(nodeID=2),
+  Sink():(nodeID=0)
+  ]
+
+connections=[
+  Connection(0,0, 1,0),
+  Connection(1,0, 2,0),
+  Connection(1,1, 2,1),
+  Connection(1,2, 2,2),
+  Connection(1,3, 2,3),
+  Connection(1,4, 2,4),
+  Connection(1,5, 2,5),
+  Connection(1,6, 2,6),
+  Connection(2,0, 3,0)
+#  Connection(3,0, 4,0)
+]

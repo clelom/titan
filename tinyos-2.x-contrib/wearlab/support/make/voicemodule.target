@@ -1,0 +1,29 @@
+#-*-Makefile-*- vim:syntax=make
+#$Id: voicemodule.target 2007/11/30
+
+PLATFORM ?= voicemodule
+
+# add platform directory
+PFLAGS += -I$(TOS_CONTRIB_PATH)/tos/platforms/$(PLATFORM)
+
+#MSP_MCU = msp430x1611
+
+# Disable MSP430 hardware multiply because it makes MSPGCC die
+PFLAGS += -mdisable-hwmul -DVOICEMODULE
+OPTFLAGS += -O
+
+#MSP_BSL ?= tos-bsl
+#MSP_BSL_FLAGS = --telosb
+
+VOLUME_FILE = volumes-stm25p.xml
+VOLUME_ALLOCATOR = tos-storage-stm25p
+
+ifdef CC2420_CHANNEL
+PFLAGS += -DCC2420_DEF_CHANNEL=$(CC2420_CHANNEL)
+endif
+
+$(call TOSMake_include_platform,msp)
+
+voicemodule: $(BUILD_DEPS)
+
+

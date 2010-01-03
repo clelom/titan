@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.2" maxVersion="1.6" type="org.netbeans.modules.form.forminfo.FrameFormInfo">
+  <Properties>
+    <Property name="resizable" type="boolean" value="false"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+  </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="exitForm"/>
+  </Events>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="Fix1Label" alignment="1" pref="240" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="33" pref="33" max="33" attributes="0"/>
+              <Component id="Fix2Label" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="156" pref="156" max="156" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="2" attributes="0">
+                  <Component id="Fix2Label1" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="canvas1" alignment="2" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="canvas4" alignment="2" min="-2" pref="50" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="2" attributes="0">
+                  <Component id="curScore1" alignment="2" pref="50" max="32767" attributes="1"/>
+                  <Component id="curScore2" alignment="2" pref="50" max="32767" attributes="1"/>
+                  <Component id="canvas2" alignment="2" min="-2" pref="50" max="-2" attributes="1"/>
+                  <Component id="canvas5" alignment="2" min="-2" pref="50" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="2" attributes="0">
+                  <Component id="totalScore1" alignment="2" pref="50" max="32767" attributes="1"/>
+                  <Component id="totalScore2" alignment="2" pref="50" max="32767" attributes="1"/>
+                  <Component id="canvas3" alignment="2" pref="50" max="32767" attributes="1"/>
+                  <Component id="canvas6" alignment="2" pref="50" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="buttonNextPlayer" pref="105" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="buttonCloseWindow" pref="105" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="1"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+              <Component id="playerMessage" pref="220" max="32767" attributes="1"/>
+              <EmptySpace pref="10" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="Fix1Label" min="-2" pref="46" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="Fix2Label" min="-2" max="-2" attributes="0"/>
+                  <Component id="totalScore1" min="-2" max="-2" attributes="0"/>
+                  <Component id="curScore1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="Fix2Label1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="totalScore2" min="-2" max="-2" attributes="0"/>
+                  <Component id="curScore2" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="canvas1" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="canvas2" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="canvas3" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="canvas4" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="canvas5" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="canvas6" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="playerMessage" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="buttonCloseWindow" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonNextPlayer" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="java.awt.Canvas" name="canvas1">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new java.awt.Canvas() {&#xa;            public void paint( Graphics g )&#xa;            {&#xa;                g.drawImage( m_img[0], 0, 0, this );&#xa;            }&#xa;&#xa;        };"/>
+      </AuxValues>
+    </Component>
+    <Component class="java.awt.Label" name="Fix1Label">
+      <Properties>
+        <Property name="alignment" type="int" value="1"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="66" red="33" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="20" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Pervasive Farkle"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Label" name="Fix2Label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Player 1:"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Label" name="curScore1">
+      <Properties>
+        <Property name="alignment" type="int" value="2"/>
+        <Property name="name" type="java.lang.String" value="curScore1" noResource="true"/>
+        <Property name="text" type="java.lang.String" value="0"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Canvas" name="canvas2">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new java.awt.Canvas() {&#xa;            public void paint( Graphics g )&#xa;            {&#xa;                g.drawImage( m_img[1], 0, 0, this );&#xa;            }&#xa;&#xa;        };"/>
+      </AuxValues>
+    </Component>
+    <Component class="java.awt.Canvas" name="canvas3">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new java.awt.Canvas() {&#xa;            public void paint( Graphics g )&#xa;            {&#xa;                g.drawImage( m_img[2], 0, 0, this );&#xa;            }&#xa;&#xa;        };"/>
+      </AuxValues>
+    </Component>
+    <Component class="java.awt.Canvas" name="canvas4">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new java.awt.Canvas() {&#xa;            public void paint( Graphics g )&#xa;            {&#xa;                g.drawImage( m_img[3], 0, 0, this );&#xa;            }&#xa;&#xa;        };"/>
+      </AuxValues>
+    </Component>
+    <Component class="java.awt.Canvas" name="canvas5">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new java.awt.Canvas() {&#xa;            public void paint( Graphics g )&#xa;            {&#xa;                g.drawImage( m_img[4], 0, 0, this );&#xa;            }&#xa;&#xa;        };"/>
+      </AuxValues>
+    </Component>
+    <Component class="java.awt.Canvas" name="canvas6">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new java.awt.Canvas() {&#xa;            public void paint( Graphics g )&#xa;            {&#xa;                g.drawImage( m_img[5], 0, 0, this );&#xa;            }&#xa;&#xa;        };"/>
+      </AuxValues>
+    </Component>
+    <Component class="java.awt.Label" name="Fix2Label1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Player 2:"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Label" name="curScore2">
+      <Properties>
+        <Property name="alignment" type="int" value="2"/>
+        <Property name="name" type="java.lang.String" value="curScore2" noResource="true"/>
+        <Property name="text" type="java.lang.String" value="0"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Label" name="playerMessage">
+      <Properties>
+        <Property name="alignment" type="int" value="1"/>
+        <Property name="name" type="java.lang.String" value="Message" noResource="true"/>
+        <Property name="text" type="java.lang.String" value="Initializing Farkle game"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Label" name="totalScore1">
+      <Properties>
+        <Property name="alignment" type="int" value="2"/>
+        <Property name="name" type="java.lang.String" value="totalScore1" noResource="true"/>
+        <Property name="text" type="java.lang.String" value="0"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Label" name="totalScore2">
+      <Properties>
+        <Property name="alignment" type="int" value="2"/>
+        <Property name="name" type="java.lang.String" value="totalScore2" noResource="true"/>
+        <Property name="text" type="java.lang.String" value="0"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Button" name="buttonCloseWindow">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="Close window"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="closeButonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="java.awt.Button" name="buttonNextPlayer">
+      <Properties>
+        <Property name="actionCommand" type="java.lang.String" value="Next Player"/>
+        <Property name="label" type="java.lang.String" value="Next Player"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonNextPlayercloseButonActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>

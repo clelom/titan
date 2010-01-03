@@ -1,0 +1,47 @@
+#tasks=[
+#  RoundTrip():(nodeID=100),
+#  Duplicator():(nodeID=1)
+#]
+
+#connections=[
+#  Connection(0,0, 1,0),
+#  Connection(1,0, 0,0)
+#]
+
+##################
+
+#tasks=[
+#  SimpleWriter(1000):(nodeID=100),
+#  Duplicator(2):(nodeID=100),
+#  Duplicator(2):(nodeID=1),
+#  Mean(2,2):(nodeID=1),
+#  Mean(2,2):(nodeID=1),
+#  Sink():(nodeID=0)
+#]
+
+#connections=[
+#  Connection(0,0, 1,0),
+#  Connection(1,0, 2,0),
+#  Connection(1,1, 5,0),
+#  Connection(2,0, 3,0),
+#  Connection(2,1, 4,0),
+#  Connection(3,0, 5,1),
+#  Connection(4,0, 5,2)
+#]
+
+############
+
+tasks=[
+  SimpleWriter(1000):(nodeID=100),
+  Duplicator(2):(nodeID=100),
+  #Mean(2,2):(nodeID=1),
+  SimpleWriter():(nodeID=1),
+  Sink():(nodeID=0)
+]
+
+connections=[
+  Connection(0,0, 1,0),
+  Connection(1,0, 3,0),
+  #Connection(1,1, 2,0),
+  Connection(2,0, 3,1)
+]

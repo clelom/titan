@@ -1,0 +1,10 @@
+tasks=[
+  SimpleWriter(250):(nodeID=100),
+  Mean(5, 2):(nodeID=101),
+  Sink():(nodeID=0)
+]
+
+connections=[
+  Connection(0,0, 1,0),
+  Connection(1,0, 2,0)
+]

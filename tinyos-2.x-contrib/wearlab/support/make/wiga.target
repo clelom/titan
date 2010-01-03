@@ -1,0 +1,20 @@
+#-*-Makefile-*- vim:syntax=make
+#$Id:
+
+PLATFORM ?= wiga
+
+# add platform directory
+PFLAGS += -I$(TOS_CONTRIB_PATH)/tos/platforms/$(PLATFORM)
+
+# Disable MSP430 hardware multiply because it makes MSPGCC die
+PFLAGS += -mdisable-hwmul
+OPTFLAGS += -O
+
+MSP_BSL ?= tos-bsl
+MSP_BSL_FLAGS = --telosb
+
+$(call TOSMake_include_platform,msp)
+
+wiga: $(BUILD_DEPS)
+	@:
+

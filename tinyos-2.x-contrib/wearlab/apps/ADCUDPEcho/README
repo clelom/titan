@@ -1,0 +1,13 @@
+# Author:
+#   * Benedikt Köppel <bkoeppel@ee.ethz.ch>
+# written for
+#   * Clemens Lombriser
+#   * ETHZ / IfE
+#
+# Projects:
+#   * TinyOS application for telosb mote
+#   * periodically samples ADC
+#   * sends captured values over IPv6 (UDP) to other motes
+#   * communicates with b6lowpan IPv6 stack to any host/mote
+#
+

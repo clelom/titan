@@ -1,0 +1,18 @@
+tasks=[
+  GSense(1000):(nodeID=100),
+  Sink():(nodeID=0),
+]
+
+connections=[
+  Connection(0,0, 1,0),
+  Connection(0,1, 1,1),
+  Connection(0,2, 1,2),
+  Connection(0,3, 1,3),
+  Connection(0,4, 1,4),
+  Connection(0,5, 1,5),
+  Connection(0,6, 1,6),
+  Connection(0,7, 1,7),
+  Connection(0,8, 1,8),
+  Connection(0,9, 1,9),
+  Connection(0,10, 1,10)
+]

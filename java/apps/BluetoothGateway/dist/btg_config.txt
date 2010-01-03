@@ -1,0 +1,4 @@
+btdevice = 1000E85CDC3F (motion sensor 119)
+btdevice = 1000E89D082E (motion sensor 120)
+
+

@@ -1,0 +1,23 @@
+# This file is to be executed for tests with the ConfigReader. It is opened in 
+# its main() function. The file has no function for other things.
+#
+
+# eth\ife\wearable\Titan\test_configreader.txt
+
+tasks=[ 
+  SimpleWriter(),      # task 0
+  Duplicator(2),       # task 1
+  Mean(3),             # task 2
+  MinMax(8),           # task 3
+  Merge(2),#:(nodeID=1), # task 4
+  Sink                 # task 5
+  ]
+
+connections=[
+  Connection(0,0,1,0),
+  Connection(1,0,2,0),
+  Connection(1,1,3,0),
+  Connection(2,0,4,0),
+  Connection(3,0,4,1),
+  Connection(4,0,5,0)
+  ]

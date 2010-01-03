@@ -1,0 +1,38 @@
+#    This file is part of Titan.
+#
+#    Titan is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as 
+#    published by the Free Software Foundation, either version 3 of 
+#    the License, or (at your option) any later version.
+#
+#    Titan is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with Titan. If not, see <http://www.gnu.org/licenses/>.
+#
+#    Copyright 2009 Clemens Lombriser
+
+#
+# Titan Makerules
+#
+# author: Clemens Lombriser <lombriser@ife.ee.ethz.ch>
+#
+
+TITAN_LIB_DIR := $(dir $(lastword $(MAKEFILE_LIST)))
+
+# include this directory
+CFLAGS += -I$(TITAN_LIB_DIR)
+CFLAGS += -I$(TITAN_LIB_DIR)tasks
+CFLAGS += -I$(TITAN_LIB_DIR)interfaces
+
+# construct and cleanup path to python addition
+TITAN_PYTHON_PATH_ADDITION := $(TITAN_LIB_DIR)../../../support/sdk/python
+TITAN_PYTHON_PATH_ADDITION := $(shell cd $(TITAN_PYTHON_PATH_ADDITION);pwd )
+
+# check whether PYTHONPATH includes the python sdk
+ifeq ($(findstring $(TITAN_PYTHON_PATH_ADDITION),$(PYTHONPATH)),)
+$(warning For simulation, PYTHONPATH should contain "$(TITAN_PYTHON_PATH_ADDITION)" )
+endif

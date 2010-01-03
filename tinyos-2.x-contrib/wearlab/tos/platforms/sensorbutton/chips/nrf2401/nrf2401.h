@@ -1,0 +1,157 @@
+/*
+    This file is part of Titan.
+
+    Titan is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as 
+    published by the Free Software Foundation, either version 3 of 
+    the License, or (at your option) any later version.
+
+    Titan is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Titan. If not, see <http://www.gnu.org/licenses/>.
+*/
+
+/**
+ *  Configurations for the nRF2401 
+ *
+ *  @author Christoph Walser
+ *  @date   November 22 2006
+ *
+ **/
+
+#ifndef _H_nrf2401_h
+#define _H_nrf2401_h
+
+#include "msp430usart.h"		//Needed for configuring the USART's
+
+msp430_uart_config_t uart0_config = {
+      ubr: UBR_1MHZ_115200,      //Baud rate (use enum msp430_uart_rate_t for predefined rates)
+      umctl: UMCTL_1MHZ_115200,    //Modulation (use enum msp430_uart_rate_t for predefined rates)
+      ssel: 2,     //Clock source (00=UCLKI; 01=ACLK; 10=SMCLK; 11=SMCLK)
+      pena: 0,     //Parity enable (0=disabled; 1=enabled)
+      pev: 1,      //Parity select (0=odd; 1=even)
+      spb: 0,      //Stop bits (0=one stop bit; 1=two stop bits)
+      clen: 1,     //Character length (0=7-bit data; 1=8-bit data)
+      listen: 0,   //Listen enable (0=disabled; 1=enabled, feed tx back to receiver)
+      mm: 0,       //Multiprocessor mode (0=idle-line protocol; 1=address-bit protocol)
+      0,
+      ckpl: 0,     //Clock polarity (0=normal; 1=inverted)
+      urxse: 1,    //Receive start-edge detection (0=disabled; 1=enabled)
+      urxeie: 1,   //Erroneous-character receive (0=rejected; 1=recieved and URXIFGx set)
+      urxwie: 1,   //Wake-up interrupt-enable (0=all characters set URXIFGx; 1=only address sets URXIFGx)
+};
+  
+msp430_spi_config_t spi1_config = {
+      ubr: 36,      //Clock division factor (SMCLK runs at 1Mhz in TinyOS)
+	  ssel: 2,     //Clock source (00=external UCLK [slave]; 01=ACLK [master]; 10=SMCLK [master]; 11=SMCLK [master])
+	  clen: 1,     //Character length (0=7-bit data; 1=8-bit data)
+	  listen: 0,   //Listen enable (0=disabled; 1=enabled, feed tx back to receiver(default))
+	  mm: 1,       //Master mode (0=slave; 1=master)
+	  ckph: 1,     //Clock phase (0=normal; 1=half-cycle delayed)
+	  ckpl: 0,     //Clock polarity (0=inactive is low && data at rising edge; 1=inverted(default))
+	  stc: 1,      //Slave transmit (0=4-pin SPI && STE enabled; 1=3-pin SPI && STE disabled)
+};
+  
+//Constants for configuration word of nRF2401:
+enum {
+	  RXEN 			= 0x01,          //RX/TX Operation (0=tx; 1=rx)
+	  RF_CH 		= 0x34,	//26      //Frequency channel (has to be between 0 and 524)
+	  
+	  RF_PWR		= 0x02,	//0 dBm	//RF Output Power in TX Mode(00=-20dBm; 01=-10dBm; 10=-5dBm; 11=0dBm)
+	  XO_F			= 0x0C,	//16 Mhz	//Crystal Frequency (000=4Mhz; 001=8Mhz; 010=12Mhz; 011=16Mhz; 100=20Mhz)
+	  RFDR_SB		= 0x20,	//1		//RF data rate (0=250 kbps; 1=1 Mbps)
+	  CM			= 0x40,	//1		//Communication mode (0=Direct Mode; 1=ShockBurst Mode)
+	  RX2_EN		= 0x80,	//1		//Enable two channel receive mode (1=enabled; 0=disabled)
+	  
+	  CRC_EN		= 0x01,	//1		//Enable on-chip CRC generation/checking (1=enabled; 0=disabled)
+	  CRC_L			= 0x02,	//16		//8 or 16 bit CRC (0=8bit; 1=16bit)
+	  ADDR_W		= 0xA0,	//40		//Number of address bits (both RX channels)
+	  
+	  ADDR1_1		= 0x10,			//Receiver address channel 1
+	  ADDR1_2		= 0x11,			//Receiver address channel 1
+	  ADDR1_3		= 0x12,			//Receiver address channel 1
+	  ADDR1_4		= 0x13,			//Receiver address channel 1
+	  ADDR1_5		= 0x14,			//Receiver address channel 1
+	  
+	  ADDR2_1		= 0x16,			//Receiver address channel 2
+	  ADDR2_2		= 0x17,			//Receiver address channel 2
+	  ADDR2_3		= 0x18,			//Receiver address channel 2
+	  ADDR2_4		= 0x19,			//Receiver address channel 2
+	  ADDR2_5		= 0x20,			//Receiver address channel 2
+	  
+	  DATA1_W		= 0xC8,	//200	//Number of bits in RF package payload section for receive-channel 1 (256 bit packetlength - 40 bit address - 16 bit CRC)
+	  
+	  DATA2_W		= 0xC8,	//200	//Number of bits in RF package payload section for receive-channel 2 (256 bit packetlength - 40 bit address - 16 bit CRC)
+	  
+	  PLL_CTRL		= 0x00,			//Controls the setting of the PLL for test purposes (00=openTX/closed RX; 01=open TX/open RX; 10=closed TX/closed RX; 11=closed TX/closed RX)
+	  TEST_1		= 0x1C,			//Reserved for testing
+	  
+	  TEST_2		= 0x08,			//Reserved for testing
+	  
+	  TEST_3		= 0x8E,			//Reserved for testing
+  };
+
+
+//Configuration word for sending over the nRF2401:
+uint8_t nrf_send_config[15] = {
+							DATA2_W,
+							DATA1_W,
+							ADDR2_1,
+							ADDR2_2,
+							ADDR2_3,
+							ADDR2_4,
+							ADDR2_5,
+							ADDR1_1,
+							ADDR1_2,
+							ADDR1_3,
+							ADDR1_4,
+							ADDR1_5,
+							ADDR_W + CRC_L + CRC_EN,
+							RF_PWR + XO_F + RFDR_SB + CM,
+							RF_CH
+	};
+
+//Configuration word for receiving over the nRF2401:
+uint8_t nrf_receive_config[15] = {
+							DATA2_W,
+							DATA1_W,
+							ADDR2_1,
+							ADDR2_2,
+							ADDR2_3,
+							ADDR2_4,
+							ADDR2_5,
+							ADDR1_1,
+							ADDR1_2,
+							ADDR1_3,
+							ADDR1_4,
+							ADDR1_5,
+							ADDR_W + CRC_L + CRC_EN,
+							RF_PWR + XO_F + RFDR_SB + CM,
+							RXEN + RF_CH
+	};
+
+typedef nx_struct nrf2401_header_t {
+  nx_uint8_t addr[2];
+} nrf2401_header_t;
+
+typedef nx_struct nrf2401_footer_t {
+} nrf2401_footer_t;
+
+typedef nx_struct nrf2401_metadata_t {
+} nrf2401_metadata_t;
+
+typedef nx_struct nrf2401_packet_t {
+  nrf2401_header_t head;
+  nrf2401_footer_t foot;
+  nx_uint8_t data[];
+} nrf2401_packet_t;
+
+#ifndef TOSH_DATA_LENGTH
+#define TOSH_DATA_LENGTH 25
+#endif
+
+#endif//_H_nrf2401_h

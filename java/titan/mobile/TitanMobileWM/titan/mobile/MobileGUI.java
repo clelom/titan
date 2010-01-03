@@ -1,0 +1,452 @@
+/*
+    This file is part of Titan.
+
+    Titan is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as 
+    published by the Free Software Foundation, either version 3 of 
+    the License, or (at your option) any later version.
+
+    Titan is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Titan. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+package titan.mobile;
+
+import java.awt.BorderLayout;
+
+import java.awt.Panel;
+import java.io.ByteArrayOutputStream;
+import java.io.FileWriter;
+import java.io.FilterOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.Observable;
+import java.util.Observer;
+
+import java.awt.Panel;
+import titancommon.gui.TitanFrame;
+
+/**
+ * 
+ * @author Mirco Rossi <mrossi@ife.ee.ethz.ch>
+ */
+public class MobileGUI extends TitanFrame implements Observer {
+	
+	private MobileGUIPanel m_panel;	// We need a possibility to access the actual gui.
+	
+	public MobileGUI() {
+	    super();
+        // Registering this as a new frame with the TitanFrame class
+        TitanFrame.registerFrame(this);
+        
+        // Set the content of the main panel of this TitanFrame to our
+        // actual GUI which is implemented as a private Panel below.
+        m_panel = new MobileGUIPanel();
+        setTitanFramePanel( m_panel );
+	}
+	
+	/**
+	 * Appends the notification to the MobileGUIPanel's status text area.
+	 */
+	public void update(Observable arg0, Object arg1) {
+		m_panel.StatusText.append((String) arg1);
+		// throw new UnsupportedOperationException("Not supported yet.");
+	}
+	
+	/*
+	 * The following two methods are just wrappers for methods of the GUIPanel which
+	 * are needed by the outside world.
+	 * 
+	 * TODO: This is kind of ugly... This should be solved in a more proper way
+	 * by newly implemented GUIs.
+	 */
+	public void setDebugText(String s1, String s2, String s3) {
+		m_panel.setDebugText(s1, s2, s3);
+	}
+	public void Alert(String s1) {
+		m_panel.Alert(s1);
+	}
+	public void enableNext( boolean b ) {
+		m_panel.enableNext(b);
+	}
+	public void QuickLink( String url ) {
+		m_panel.QuickLink(url);
+	}
+	public void TitanCommandWithoutConnection() {
+		m_panel.TitanCommandWithoutConnection();
+	}
+	public void appendGroup( String s ) {
+		m_panel.appendGroup(s);
+	}
+	public void discoveryStoped() {
+		m_panel.discoveryStoped();
+	}
+	/**
+	 * This is the actual GUI which was originally a frame itself and now is
+	 * a panel which can be added to the TitanFrame's main panel.
+	 * 
+	 * @author Mirco Rossi <mrossi@ife.ee.ethz.ch>
+	 */
+	private class MobileGUIPanel extends Panel {
+
+		Panel currPanel;
+		Panel BTSearchDevicesPanelSaved;
+		int currPanelType;
+		boolean m_isConnected;
+
+		private class PanelNames {
+
+			final static int Debug = -1;
+			final static int BTSearchDevices = 1;
+			final static int BTSearchServices = 2;
+			final static int Titan = 3;
+		}
+
+		/** Creates new form Test */
+		public MobileGUIPanel() {
+
+			initComponents();
+			// System.setOut(m_sysOut);
+			// System.setErr(m_sysOut);
+			BTSearchDevicesPanelSaved = new BTSearchDevicesPanel();
+			TemplatePanel.add(BTSearchDevicesPanelSaved);
+			currPanelType = PanelNames.BTSearchDevices;
+			NextCommand.setEnabled(false);
+			BackCommand.setEnabled(false);
+
+		}
+
+		public void QuickLink(String url) {
+			System.out.println("Try to connect to QuickLink");
+			boolean con = true;
+			try {
+				TitanMobile.startTitan(url);
+			} catch (IOException e) {
+				// setDebugText(this.getClass().getName(), "QuickLink",
+				// e.toString());
+				System.out.println("Failed to connect to QuickLink");
+				con = false;
+			}
+
+			if (con) {
+				TemplatePanel.removeAll();
+				currPanel = new TitanPanel();
+				TemplatePanel.add(currPanel);
+				TemplatePanel.validate();
+				currPanelType = PanelNames.Titan;
+
+				NextCommand.setVisible(false);
+				BackCommand.setEnabled(true);
+				BackCommand.setLabel("Disconnect");
+				System.out.println("COMMAND: titan start");
+				TitanMobile.execTitanCommand("titan start");
+				m_isConnected = true;
+			}
+		}
+
+		public void TitanCommandWithoutConnection() {
+			TemplatePanel.removeAll();
+			currPanel = new TitanPanel();
+			TemplatePanel.add(currPanel);
+			TemplatePanel.validate();
+			currPanelType = PanelNames.Titan;
+
+			NextCommand.setVisible(false);
+			BackCommand.setEnabled(true);
+			BackCommand.setLabel("Back");
+			m_isConnected = false;
+			System.out.println("Open terminal without bluetooth connection");
+
+		}
+
+		/**
+		 * This method is called from within the constructor to initialize the
+		 * form. WARNING: Do NOT modify this code. The content of this method is
+		 * always regenerated by the Form Editor.
+		 */
+		// <editor-fold defaultstate="collapsed"
+		// desc="Generated Code">//GEN-BEGIN:initComponents
+		private void initComponents() {
+
+			TemplatePanel = new java.awt.ScrollPane();
+			StatusText = new java.awt.TextArea();
+			NextCommand = new java.awt.Button();
+			BackCommand = new java.awt.Button();
+			ExitCommand = new java.awt.Button();
+
+			addWindowListener(new java.awt.event.WindowAdapter() {
+				public void windowClosing(java.awt.event.WindowEvent evt) {
+					exitForm(evt);
+				}
+			});
+
+			TemplatePanel.setBackground(new java.awt.Color(255, 255, 255));
+
+			StatusText.setEditable(false);
+
+			NextCommand.setLabel("Next");
+			NextCommand.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent evt) {
+					NextCommandActionPerformed(evt);
+				}
+			});
+
+			BackCommand.setLabel("Back");
+			BackCommand.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent evt) {
+					BackCommandActionPerformed(evt);
+				}
+			});
+
+			ExitCommand.setLabel("Exit");
+			ExitCommand.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent evt) {
+					ExitCommandActionPerformed(evt);
+				}
+			});
+
+			org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(
+					this);
+			this.setLayout(layout);
+			layout
+					.setHorizontalGroup(layout
+							.createParallelGroup(
+									org.jdesktop.layout.GroupLayout.LEADING)
+							.add(
+									org.jdesktop.layout.GroupLayout.TRAILING,
+									layout
+											.createSequentialGroup()
+											.add(
+													ExitCommand,
+													org.jdesktop.layout.GroupLayout.PREFERRED_SIZE,
+													org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+													org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(
+													org.jdesktop.layout.LayoutStyle.RELATED,
+													91, Short.MAX_VALUE)
+											.add(
+													BackCommand,
+													org.jdesktop.layout.GroupLayout.PREFERRED_SIZE,
+													74,
+													org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+											.add(20, 20, 20)
+											.add(
+													NextCommand,
+													org.jdesktop.layout.GroupLayout.PREFERRED_SIZE,
+													75,
+													org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+							.add(
+									StatusText,
+									org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+									295, Short.MAX_VALUE)
+							.add(
+									TemplatePanel,
+									org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+									295, Short.MAX_VALUE));
+			layout
+					.setVerticalGroup(layout
+							.createParallelGroup(
+									org.jdesktop.layout.GroupLayout.LEADING)
+							.add(
+									org.jdesktop.layout.GroupLayout.TRAILING,
+									layout
+											.createSequentialGroup()
+											.add(
+													TemplatePanel,
+													org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+													182, Short.MAX_VALUE)
+											.addPreferredGap(
+													org.jdesktop.layout.LayoutStyle.RELATED)
+											.add(
+													StatusText,
+													org.jdesktop.layout.GroupLayout.PREFERRED_SIZE,
+													89,
+													org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(
+													org.jdesktop.layout.LayoutStyle.RELATED)
+											.add(
+													layout
+															.createParallelGroup(
+																	org.jdesktop.layout.GroupLayout.TRAILING,
+																	false)
+															.add(
+																	NextCommand,
+																	org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+																	org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+																	Short.MAX_VALUE)
+															.add(
+																	ExitCommand,
+																	org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+																	org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+																	Short.MAX_VALUE)
+															.add(
+																	BackCommand,
+																	org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+																	org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+																	Short.MAX_VALUE))));
+
+			pack();
+		}// </editor-fold>//GEN-END:initComponents
+
+		/** Exit the Application */
+		private void exitForm(java.awt.event.WindowEvent evt) {// GEN-FIRST:event_exitForm
+			System.exit(0);
+		}// GEN-LAST:event_exitForm
+
+		private void NextCommandActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_NextCommandActionPerformed
+			if (currPanelType == PanelNames.BTSearchDevices) {
+
+				NextCommand.setEnabled(false);
+				NextCommand.setLabel("Connect");
+				BackCommand.setEnabled(true);
+				TemplatePanel.removeAll();
+				currPanelType = PanelNames.BTSearchServices;
+				currPanel = new BTSearchServicesPanel(
+						((BTSearchDevicesPanel) BTSearchDevicesPanelSaved).m_selection);
+				TemplatePanel.add(currPanel);
+				TemplatePanel.validate();
+
+			} else if (currPanelType == PanelNames.BTSearchServices) {
+				boolean con = true;
+				try {
+					TitanMobile
+							.startTitan(((BTSearchServicesPanel) currPanel).m_serviceSelection);
+				} catch (IOException e) {
+					setDebugText(this.getClass().getName(),
+							"commandAction:CMD_CONNECT", e.toString());
+					con = false;
+				}
+
+				if (con) {
+					TemplatePanel.removeAll();
+					currPanel = new TitanPanel();
+					TemplatePanel.add(currPanel);
+					TemplatePanel.validate();
+					currPanelType = PanelNames.Titan;
+
+					NextCommand.setVisible(false);
+					BackCommand.setEnabled(true);
+					BackCommand.setLabel("Disconnect");
+					m_isConnected = true;
+				}
+
+			}
+
+		}// GEN-LAST:event_NextCommandActionPerformed
+
+		private void ExitCommandActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ExitCommandActionPerformed
+			System.exit(0);
+		}// GEN-LAST:event_ExitCommandActionPerformed
+
+		private void BackCommandActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BackCommandActionPerformed
+			if (currPanelType == PanelNames.BTSearchServices) {
+				try {
+					TitanMobile.stopThread();
+				} catch (IOException e) {
+					setDebugText(this.getClass().getName(),
+							"BackCommandActionPerformed", e.toString());
+				}
+				TemplatePanel.removeAll();
+				currPanelType = PanelNames.BTSearchDevices;
+				TemplatePanel.add(BTSearchDevicesPanelSaved);
+				TemplatePanel.validate();
+				NextCommand.setEnabled(false);
+				NextCommand.setLabel("Next");
+				BackCommand.setEnabled(false);
+			} else if (currPanelType == PanelNames.Titan) {
+				if (m_isConnected) {
+					try {
+						TitanMobile.stopThread();
+					} catch (IOException e) {
+						setDebugText(this.getClass().getName(),
+								"BackCommandActionPerformed", e.toString());
+					}
+
+					System.out.println("Disconnected");
+				}
+
+				System.out.println("Close terminal");
+
+				TemplatePanel.removeAll();
+				currPanelType = PanelNames.BTSearchDevices;
+				TemplatePanel.add(BTSearchDevicesPanelSaved);
+				TemplatePanel.validate();
+				NextCommand.setEnabled(false);
+				NextCommand.setVisible(true);
+				NextCommand.setLabel("Next");
+				BackCommand.setEnabled(false);
+				BackCommand.setLabel("Back");
+				m_isConnected = false;
+
+			}
+
+		}// GEN-LAST:event_BackCommandActionPerformed
+
+		public void setDebugText(String s1, String s2, String s3) {
+			TemplatePanel.removeAll();
+			currPanel = new DebugPanel(s1, s2, s3);
+			TemplatePanel.add(currPanel);
+			TemplatePanel.validate();
+			currPanelType = PanelNames.Debug;
+
+			NextCommand.setEnabled(false);
+			BackCommand.setEnabled(false);
+
+		}
+
+		public void Alert(String s1) {
+			setText(s1);
+			// TODO
+		}
+
+		public void appendGroup(String s1) {
+			if (currPanelType == PanelNames.BTSearchDevices) {
+				((BTSearchDevicesPanel) BTSearchDevicesPanelSaved).appendBT(s1);
+			} else if (currPanelType == PanelNames.BTSearchServices) {
+				((BTSearchServicesPanel) currPanel).appendBT(s1);
+			}
+		}
+
+		public void setText(String s1) {
+			StatusText.append(s1 + "\n");
+		}
+
+		public void discoveryStoped() {
+			if (currPanelType == PanelNames.BTSearchDevices) {
+				((BTSearchDevicesPanel) BTSearchDevicesPanelSaved)
+						.discoveryStoped();
+			} else if (currPanelType == PanelNames.BTSearchServices) {
+				((BTSearchServicesPanel) currPanel).discoveryStoped();
+			}
+
+		}
+
+		public void enableNext(boolean b) {
+			if (b) {
+				NextCommand.setEnabled(true);
+			} else {
+				NextCommand.setEnabled(false);
+			}
+
+		}
+
+		public void showHelp(String s1) {
+			setText(s1);
+		}
+
+		// Variables declaration - do not modify//GEN-BEGIN:variables
+		private java.awt.Button BackCommand;
+		private java.awt.Button ExitCommand;
+		private java.awt.Button NextCommand;
+		private java.awt.TextArea StatusText;
+		private java.awt.ScrollPane TemplatePanel;
+
+		// End of variables declaration//GEN-END:variables
+	}
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<buildTargets>
+<target loop="false" name="Target switchmodule" nostdinc="false" time="0.0">
+<includes build="true" defaults="true"/>
+<excludes>
+<exclude>.*\.svn.*</exclude>
+</excludes>
+<typedefs/>
+<macros/>
+<selected>switchmodule</selected>
+<application>SmartObjectApp</application>
+<default>true</default>
+</target>
+</buildTargets>
