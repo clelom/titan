@@ -4,4 +4,4 @@ Titan is a service-oriented framework that interconnects sensor nodes worn on th
 
 The idea is to provide a pervasive computing environment that you can carry with you. The code for sensor network nodes is based on TinyOS, the network and application management in Java.
 
-<img src="http://www.wearable.ethz.ch/research/groups/sensor_nets/Titan/titan_architecture?hires"/>
+More information available at: [http://www.wearable.ethz.ch/research/groups/sensor_nets/Titan ETH's Wearable Computing Group webiste]
